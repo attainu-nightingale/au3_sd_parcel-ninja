@@ -1,6 +1,6 @@
 const express=require("express");
 const app=express();
-const aboutus =require("./Home");
+const home =require("./home");
 const aboutus =require("./aboutus");
 const contactus =require("./contactus");
 const adminlogin =require("./adminlogin");
@@ -12,7 +12,7 @@ const ninjadashboard=require("./ninjadashboard");
 const ninjabooking=require("./ninjabooking");
 
 app.get("/" ,function(req, res){
- res.send("welcome to homepage")
+    res.send("welcome to homepage")
 });
 
 app.use("/home",home);

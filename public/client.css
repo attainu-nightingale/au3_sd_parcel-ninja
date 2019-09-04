@@ -1,0 +1,12 @@
+body{
+    box-sizing: border-box;
+    background-image:url("https://image.freepik.com/free-photo/packing-brown-parcels-box-beautiful-natural-green-background_10134-312.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+  }
