@@ -1,0 +1,102 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+.pl-5 {
+  color: #00a7b5;
+}
+#brand {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+a:hover {
+  color: black;
+}
+#brand {
+  color: #e8e2d6;
+}
+#main {
+  width: 100vw;
+  height: 400px;
+  background-image: url("https://www.lalamove.com/hubfs/Lalamove%20India%20images/Main%20page_india_new.svg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+#navitem {
+  margin-left: 350px !important ;
+  font-size: 30px;
+}
+#navitem a {
+  color: #00a7b5;
+}
+.section h1 {
+  font-size: 5em;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+
+.section .btn {
+  display: block;
+  width: 200px;
+  padding: 1em;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  text-decoration: none;
+  font-size: 1.5em;
+  border: 3px solid white;
+  border-radius: 20px;
+  background-color: #00a7b5;
+}
+.search {
+  margin-top: 30px;
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00a7b5;
+  border-right: none;
+  padding: 5px;
+  height: 50px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9dbfaf;
+}
+
+.searchTerm:focus {
+  color: #00a7b5;
+}
+
+#work {
+  height: 200px;
+}
+#work {
+  background-image: url("./img/frame.jpg");
+  background-size: contain;
+  height: 500px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.searchButton {
+  width: 40px;
+  height: 50px;
+  border: 1px solid #00a7b5;
+  background: #00a7b5;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
