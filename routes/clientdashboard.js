@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/home", function(req,res){
-   if (req.app.locals.loggedin == true){
+router.get("/profile", function(req,res){
+//    if (req.app.locals.loggedin == true){
     const db = req.app.locals.db;
     db.collection("ninja").find({}).toArray(function(err,result){
         if(err) {
@@ -15,20 +15,19 @@ router.get("/home", function(req,res){
             data: result,
         });
     });   
-   }else {
-    res.redirect("/");
-  }
+// //    }else {
+//     res.redirect("/");
+//   }
 });
-    
-router.post("/home/:id", function(req, res) {
+
+router.post("/profile/:id", function(req, res) {
     console.log(req.params.id);
     res.render("form", {
     title:"client form",
     id: req.params.id
     });
 });
-      
-    
+
 router.post("/parceldetails", function(req,res){
 const db = req.app.locals.db;
 db.collection("parcel").insertOne(req.body ,function(err,result){
@@ -36,8 +35,8 @@ if(err) {
     throw err;
     }
 console.log(req.body)
-res.redirect("/home")
-    });
+});
+res.redirect("/clientdashboard/profile")
 });
     
 module.exports = router;
