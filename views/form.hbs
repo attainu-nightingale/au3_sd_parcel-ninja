@@ -1,53 +1,53 @@
-<form class="container mt-5">
+<form class="container mt-5" action="/clientdashboard/parceldetails" method="POST">
   <div class="form-row">
     <div class="form-group col-md-4">
-      <label for="inputEmail4">Your Name</label>
-      <input type="text" class="form-control" id="inputEmail4" placeholder="Enter Your Name">
+      <label for="inputEmail4" style="color:#004f59;font-weight:bold">Your Name</label>
+      <input type="text" class="form-control" name="Client name" placeholder="Enter Your Name">
     </div>
     <div class="form-group col-md-4">
-      <label for="inputEmail4">Item to be delivered</label>
-      <input type="email" class="form-control"placeholder="Enter Item Details">
+      <label for="inputEmail4" style="color:#004f59; font-weight:bold">Item to be delivered</label>
+      <input type="text" class="form-control" name="orderitem" placeholder="Enter Item Details">
     </div>
     <div class="form-group col-md-4">
-      <label for="inputPassword4">Order Id</label>
-      <input type="text" class="form-control" id="Order Id" placeholder="Create Your Own Id">
+      <label for="inputPassword4" style="color:#004f59; font-weight:bold">Order Id</label>
+      <input type="text" class="form-control" name="OrderId" placeholder="Create Your Own Id">
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-4">
-      <label for="inputEmail4"> Addressee Name</label>
-      <input type="email" class="form-control" id="inputEmail4" placeholder="Enter Addressee Name">
+      <label for="inputEmail4" style="color:#004f59; font-weight:bold"> Addressee Name</label>
+      <input type="text" class="form-control" name="addresseename" placeholder="Enter Addressee Name">
     </div>
     <div class="form-group col-md-4">
-      <label for="inputEmail4">Mobile Number</label>
-      <input type="number" class="form-control"placeholder="Enter Mobile Number">
+      <label for="inputEmail4" style="color:#004f59; font-weight:bold">Mobile Number</label>
+      <input type="number" class="form-control"  name="mobilenumber" placeholder="Enter Mobile Number">
     </div>
     <div class="form-group col-md-4">
-      <label for="inputPassword4">Ninja Id</label>
-      <input type="text" class="form-control" id="inputPassword4" placeholder="Create Your Own Id">
+      <label for="inputPassword4" style="color:#004f59; font-weight:bold">Ninja Id</label>
+      <input type="text" class="form-control" name="ninjaid" value="{{id}}" placeholder={{id}}>
     </div>
   </div>
   <div class="form-group">
-    <label for="inputAddress">Pick Up Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="Enter Your Pickup Address">
+    <label for="inputAddress" style="color:#004f59; font-weight:bold">Pick Up Address</label>
+    <input type="text" class="form-control" name="pickupaddress" placeholder="Enter Your Pickup Address">
   </div>
   <div class="form-group">
-    <label for="inputAddress2">Delivery Address</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Enter Your Delivery Address">
+    <label for="inputAddress2" style="color:#004f59; font-weight:bold">Delivery Address</label>
+    <input type="text" class="form-control" name="deliveryaddress" placeholder="Enter Your Delivery Address">
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputCity">City</label>
-      <input type="text" class="form-control" id="inputCity">
+      <label for="inputCity" style="color:#004f59; font-weight:bold">locality</label>
+      <input type="text" class="form-control" name="locality">
     </div>
     <div class="form-group col-md-4">
-      <label for="inputState">State</label>
-        <input type="text" class="form-control" id="inputCity">
+      <label for="inputState" style="color:#004f59; font-weight:bold">City</label>
+        <input type="text" class="form-control" name="City">
     </div>
     <div class="form-group col-md-2">
-      <label for="inputZip">Pincode</label>
-      <input type="text" class="form-control" id="inputZip">
+      <label for="inputZip" style="color:#004f59; font-weight:bold">Pincode</label>
+      <input type="text" class="form-control" name="Pincode">
     </div>
   </div>
-  <button type="submit" class="btn bg-info mb-3"style="color:white">Booked</button>
+  <button class="btn bg-info mb-3"style="color:white">Booked</button>
 </form>
