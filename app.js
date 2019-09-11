@@ -1,31 +1,12 @@
-const express=require("express");
-const app=express();
-const home =require("./home");
-const aboutus =require("./aboutus");
-const contactus =require("./contactus");
-const adminlogin =require("./adminlogin");
-const ninjalogin =require("./ninjalogin");
-const clientlogin=require("./clientlogin");
-const adminlanding=require("./adminlanding");
-const clientdashboard=require("./clientdashboard");
-const ninjadashboard=require("./ninjadashboard");
-const ninjabooking=require("./ninjabooking");
+var express = require("express");
+var app = express();
 
-app.get("/" ,function(req, res){
-    res.send("welcome to homepage")
-});
+var login = require("./routes/login");
+var signup = require("./routes/signup");
 
-app.use("/home",home);
-app.use("/aboutus",aboutus);
-app.use("/contactus",contactus);
-app.use("/adminlogin",adminlogin);
-app.use("/ninjalogin",ninjalogin);
-app.use("/clientlogin",clientlogin);
-app.use("/adminlanding",adminlanding);
-app.use("/clientdashboard",clientdashboard);
-app.use("/ninjabooking",ninjabooking);
-app.use("/ninjadashboard",ninjadashboard);
+app.use("/login", login);
+app.use("/signup", signup);
 
 app.listen(3000, function(){
-    console.log("port is running!!!")
+    console.log("listening on port 3000");
 });

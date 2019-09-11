@@ -6,11 +6,10 @@ mongoClient.connect(
   "mongodb://localhost:27017",
   { useUnifiedTopology: true },
   function(err, client) {
-    if (err) throw err;
+    if(err) throw err;
     db = client.db("ninjaparcel")});
 
 router.use(express.urlencoded({extended: false}));
-
 router.use(express.static("public"));
 
 router.get("/", function(req, res) {
