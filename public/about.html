@@ -17,7 +17,7 @@
   <body>
     <div id="neil">
       <nav class="navbar navbar-expand-lg bg-transparent bg-dark ">
-        <a class="navbar-brand" href="#"
+        <a class="navbar-brand" href="/"
           ><img
             src="https://trello-attachments.s3.amazonaws.com/5d64b7996a65fb4014beeb40/5d64dfa3fadb095e7a5002f0/de469a6c99b746d199951fea00a5acff/logo.png"
             width="50"
@@ -36,16 +36,19 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse " id="navitem">
+        <div
+          class="collapse navbar-collapse navitem"
+          id="navbarSupportedContent"
+        >
           <ul class="navbar-nav ">
-            <li class="nav-item mx-5   ">
-              <a class="nav-link" href="#">Home </a>
+            <li class="nav-item mx-5">
+              <a class="nav-link" href="/">Home </a>
             </li>
             <li class="nav-item  mx-5active">
               <a class="nav-link" href="#">About Us</a>
             </li>
             <li class="nav-item mx-5">
-              <a class="nav-link" href="#">Contact Us</a>
+              <a class="nav-link" href="/contact">Contact Us</a>
             </li>
             <li class="nav-item mx-4 dropdown">
               <a
@@ -58,12 +61,10 @@
                 Login
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Customer</a>
+                <a class="dropdown-item" href="/login">Customer</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Ninja</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Admin</a>
-              </div>
+                <a class="dropdown-item" href="/login">Ninja</a>
+                
             </li>
           </ul>
         </div>
@@ -205,8 +206,7 @@
         </div>
       </div>
     </div>
-    <div>
-    </div>
+    <div></div>
     <footer class="bg-dark ">
       <div class="container pt-3">
         <div class="row">
