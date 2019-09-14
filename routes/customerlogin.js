@@ -9,15 +9,25 @@ mongoClient.connect(
    if(err) throw err;
    db = client.db("ninjaparcel");
   });
-router.use(session({secret: "Express session secret"}));
+router.use(session({
+    secret: 'This is a secret',
+    resave: true,
+    saveUninitialized:true,
+        cookie: { 
+            secure: false,
+            maxAge: 60000
+        }
+    }));
+
+// router.use(session({secret: "Express session secret"}));
 router.use(express.urlencoded({ extended: false }));
 router.use(express.static("public"));
 router.get("/", function(req, res) {
- res.sendFile("login.html", { root: "public" });
+ res.sendFile("customerlogin.html", { root: "public" });
 });
 var flag = false;
 router.post("/", function(req, res){
- db.collection("ninjaUser").find().toArray(function(err,result){
+ db.collection("customer").find().toArray(function(err,result){
      if(err) 
      throw err;
      for(var i=0; i<result.length; i++){

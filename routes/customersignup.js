@@ -13,11 +13,11 @@ router.use(express.urlencoded({extended: false}));
 router.use(express.static("public"));
 
 router.get("/", function(req, res) {
-  res.sendFile("signup.html", { root: "public" });
+  res.sendFile("customersignup.html", { root: "public" });
 });
 
 router.post("/", function(req, res){
-  db.collection("ninjaUser").insertOne(req.body);
+  db.collection("customer").insertOne(req.body);
   console.log("inserted");
   res.redirect("/login");
 });
