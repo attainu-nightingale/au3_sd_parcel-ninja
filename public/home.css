@@ -1,103 +1,44 @@
 body {
-    margin: 0;
-    font-family: sans-serif;
-}
-.pl-5{
-    color: #00a7b5;
-}
-#brand  
-    {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-li a{
-    text-decoration: none;
-    color: #e8e2d6;
+  font-family: sans-serif;
 }
 
-a:hover{
-    background-color: #00a7b5;
-    color: #231f20;
-}
-#brand{
-    color:  #e8e2d6;
-}
-#brand:hover{
-    background-color: #231f20;
-    color:  #e8e2d6;
+.navbar-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0,167,181, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
-.section {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: #231f20;
-    background-image: url('https://cache-blog.credit.com/wp-content/uploads/2015/12/delivery-scam.jpg');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+a:hover {
+  color: black;
+}
+@media only screen and (min-width: 600px) {
+  .navitem {
+    margin-left: 280px !important ;
+    font-size: 30px;
+  }
 }
 
-.section h1 {
-    font-size: 5em;
-    margin-top: 0;
-    margin-bottom: 0.5em;
+.navitem {
+  margin-left: 350px !important ;
+  font-size: 30px;
 }
 
-.section .btn {
-    display: block;
-    width: 200px;
-    padding: 1em;
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    color: white; 
-    text-decoration: none;
-    font-size: 1.5em;
-    border: 3px solid white; 
-    border-radius: 20px;
-    background-color: #00a7b5;
+#main {
+  width: 100vw;
+  height: 400px;
+  background-image: url("https://www.lalamove.com/hubfs/Lalamove%20India%20images/Main%20page_india_new.svg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
-.search {
-    margin-top: 30px;
-    width: 100%;
-    position: relative;
-    display: flex;
-  }
-  .searchTerm {
-    width: 100%;
-    border: 3px solid  #00a7b5;
-    border-right: none;
-    padding: 5px;
-    height: 50px;
-    border-radius: 5px 0 0 5px;
-    outline: none;
-    color: #9DBFAF;
-  }
-  
-  .searchTerm:focus{
-    color:  #00a7b5;
-  }
-  
-  .searchButton {
-    width: 40px;
-    height: 50px;
-    border: 1px solid  #00a7b5;
-    background:  #00a7b5;
-    text-align: center;
-    color: #fff;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-    font-size: 20px;
-  }
-  .column {
-    float: left;
-    width: 25%;
-    padding: 0 10px;
-  }
+
+.navitem a {
+  color: #00a7b5;
+}
+
+#work {
+  background-image: url("./img/frame.jpg");
+  background-size: contain;
+  height: 500px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
