@@ -7,7 +7,7 @@
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtjC1ue_JBgcpqkfusdsWaehhnHrjx5nZMG76rEZj4hoAm_gMD"
                         class="card-img-top" alt="...">
                     <div class="card-body">
-                        <p style="color:#004f59">Name:{{this.name}}</p>
+                        <p id="ninjaid " style="color:#004f59">Name:{{this.name}}</p>
                         <p style="color:#004f59">Phone NO:{{this.phoneno}}</p>
                         <p style="color:#004f59">id:{{this.employeeid}}</p>
                         <p style="color:#004f59">Locality:{{this.locality}}</p>
@@ -30,7 +30,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form method="POST" id="form">
+                                        <form id="form">
                                             <div class="form-group">
                                                 <input type="text" class="form-control" id="pickUp"
                                                     placeholder="Pick-Up address">
@@ -45,7 +45,7 @@
                                             </div>
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal"
                                                 name="fare">Close</button>
-                                            <button class="btn bg-info " id="book" name="booking"
+                                            <button type="submit" class="btn bg-info " id="book" name="booking"
                                                 value={{this._id}}>Book</button>
                                         </form>
                                     </div>

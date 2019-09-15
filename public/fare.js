@@ -29,8 +29,20 @@ $("#book").on("click", function() {
   } else {
     fare = 700;
   }
-
-  $("#fare").attr("value", fare);
+  var result = {
+    id: $("#book").val(),
+    fare: fare
+  };
+  $.ajax({
+    url: "/clientdashboard/form",
+    method: "post",
+    data: result,
+    dataType: "json",
+    success: function(data) {
+      console.log("sent");
+    }
+  });
+  /*  $("#fare").attr("value", fare);
   $("#form").attr("action", "/clientdashboard/form");
-  $("#form").submit();
+  $("#form").submit(); */
 });

@@ -11,7 +11,7 @@ mongoClient.connect(
   }
 );
 router.get("/", function(req, res) {
-  db.collection("ninja")
+  db.collection("ninjaUser")
     .find({})
     .toArray(function(err, result) {
       if (err) {

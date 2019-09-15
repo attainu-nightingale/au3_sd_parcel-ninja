@@ -2,7 +2,10 @@ var express = require("express");
 var exphbs = require("express-handlebars");
 var login = require("./routes/login");
 var signup = require("./routes/signup");
+var track = require("./routes/track");
 var clientdashboard = require("./routes/clientdashboard");
+var ninjadashboard = require("./routes/ninjadashboard");
+
 var app = express();
 
 app.engine("hbs", exphbs({ defaultLayout: "main", extname: ".hbs" }));
@@ -23,7 +26,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
 app.use("/login", login);
 app.use("/signup", signup);
+app.use("/track", track);
 app.use("/clientdashboard", clientdashboard);
+app.use("/ninjadashboard", ninjadashboard);
 
 app.get("/", function(req, res) {
   res.sendFile(__dirname + "/public/home.html");
@@ -35,9 +40,9 @@ app.get("/about", function(req, res) {
 app.get("/contact", function(req, res) {
   res.sendFile(__dirname + "/public/contact.html");
 });
-app.get("/admin", function(req, res) {
+/* app.get("/admin", function(req, res) {
   res.sendFile(__dirname + "/public/login.html");
-});
+}); */
 
 app.listen(5000, function() {
   console.log("port is running!!!");
