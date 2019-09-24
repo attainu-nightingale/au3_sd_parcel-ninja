@@ -15,7 +15,7 @@
                 width="50" height="50" alt="" style="border-radius: 50%">
         </a>
         <a class="navbar-brand mx-auto" href="/" id="brand">
-            <h2>Welcome</h2>
+            <h2>Welcome,{{this.first_name}}</h2>
         </a>
         <div class="navbar">
             <ul class="navbar-nav">
@@ -40,8 +40,16 @@
 
         </div>
     </nav>
-    {{{body}}}
-    <footer class="bg-dark ">
+    <div class="container text-center my-5">
+        <form action="./" method="get">
+            <h1>Thanks</h1>
+            <h3>your order has been placed</h3>
+            <button type="submit">ok</button>
+        </form>
+
+
+    </div>
+    <footer class="bg-dark fixed-bottom">
         <div class="container pt-3">
             <div class="row">
                 <div class="col">

@@ -1,9 +1,7 @@
-$("#book").on("click", function() {
-  var distance;
+$("#cal").on("click", function() {
   var fare;
   var origin = $("#pickUp").val();
   var destination = $("#drop").val();
-  /* 
   var service = new google.maps.DistanceMatrixService();
   service.getDistanceMatrix(
     {
@@ -19,30 +17,19 @@ $("#book").on("click", function() {
     if (status == "OK") {
       var origins = response.originAddresses;
       var destinations = response.destinationAddresses;
-      distance = response.rows[0].elements[0].distance.text;
+      var distance = response.rows[0].elements[0].distance.text;
+      console.log(distance);
+
+      if (distance < 20) {
+        fare = 200;
+      } else if (20 < distance < 40) {
+        fare = 500;
+      } else {
+        fare = 700;
+      }
+
+      $("#fare").attr("value", fare);
+      $("#fare").attr("placeholder", fare);
     }
-  } */
-  if (distance < 20) {
-    fare = 200;
-  } else if (20 < distance < 40) {
-    fare = 500;
-  } else {
-    fare = 700;
   }
-  var result = {
-    id: $("#book").val(),
-    fare: fare
-  };
-  $.ajax({
-    url: "/clientdashboard/form",
-    method: "post",
-    data: result,
-    dataType: "json",
-    success: function(data) {
-      console.log("sent");
-    }
-  });
-  /*  $("#fare").attr("value", fare);
-  $("#form").attr("action", "/clientdashboard/form");
-  $("#form").submit(); */
 });

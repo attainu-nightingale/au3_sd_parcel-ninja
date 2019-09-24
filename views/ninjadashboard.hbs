@@ -1,35 +1,31 @@
 <div class="container">
-
-
-
     <span>
-
         <img src="https://media.istockphoto.com/vectors/smiling-young-man-in-blue-vector-id486588050?k=6&m=486588050&s=612x612&w=0&h=XGLuEs-MjJs_VGb3LVwz0HfFeCwA4SBC40O3ybARCzg="
             alt="Ninja Picture" height="150px">
 
         <span id="ninja _name" style="font-size: 20px"> <strong>Name of the Ninja</strong> </span>
     </span>
-
-
 </div>
 <div class="container" style="text-align: center">
     <div class="row">
         <div class="col">
             <div class="card">
                 <div class="card-body">
+                    {{#each data}}
                     <h5 class="card-title">Personal Details</h5>
                     <div id="personal_details">
-                        Full Name : Balaji Kamalesan
+                        Full Name : {{this.first_name}}
                         <br>
-                        Emp Id: 0001
+                        <div id="id">Emp Id: {{this._id}}</div>
                         <br>
-                        Locality : Dharmapuri
+                        Locality :{{this.Locality}}
                         <br>
-                        Contact No : 8838159833
+                        Contact No : {{this.phone}}
                         <br>
-                        Registered Email : xyz@gmail.com
+                        Registered Email : {{this.email}}
 
                     </div>
+                    {{/each}}
                 </div>
             </div>
         </div>
@@ -38,10 +34,8 @@
                 <div class="card-body">
                     <h5 class="card-title">Availability Status</h5>
 
-                    <p>Availble / Not Available</p>
-                    <h5 class="card-title">Duty Status</h5>
+                    <p id="availability">Availble / Not Available</p>
 
-                    <p>Working / Not Working</p>
 
                 </div>
             </div>
@@ -58,8 +52,7 @@
                 <h5 class="card-header">Orders</h5>
                 <div class="card-body">
 
-                    <a href="#" class="btn btn-primary">Current Order</a>
-                    <a href="#" class="btn btn-primary">Recent Order</a>
+                    <a href="#" id="orders" class="btn btn-primary"> Recent Orders</a>
                 </div>
             </div>
         </div>
@@ -68,13 +61,25 @@
                 <h5 class="card-header">Change the Status</h5>
                 <div class="card-body">
 
-                    <a href="#" class="btn btn-primary">Available </a>
-                    <a href="#" class="btn btn-primary">Not Available</a>
+                    <a href="#" id="available" class="btn btn-primary">Available </a>
+                    <a href="#" id="not_available" class="btn btn-primary">Not Available</a>
                 </div>
             </div>
         </div>
     </div>
 
 </div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+    </tbody>
+</table>
 <br>
 <br>

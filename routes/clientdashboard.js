@@ -11,7 +11,7 @@ mongoClient.connect(
   }
 );
 router.get("/", function(req, res) {
-  db.collection("ninjaUser")
+  db.collection("ninja")
     .find({})
     .toArray(function(err, result) {
       if (err) {
@@ -41,7 +41,7 @@ router.post("/parceldetails", function(req, res) {
     }
     console.log(req.body);
   });
-  res.redirect("/clientdashboard");
+  res.render("order", { layout: false });
 });
 
 module.exports = router;

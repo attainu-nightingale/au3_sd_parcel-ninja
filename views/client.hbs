@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container mt-5 mb-5">
     <div class="row">
         {{#each data}}
         <div class="column">
@@ -7,9 +7,9 @@
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtjC1ue_JBgcpqkfusdsWaehhnHrjx5nZMG76rEZj4hoAm_gMD"
                         class="card-img-top" alt="...">
                     <div class="card-body">
-                        <p id="ninjaid " style="color:#004f59">Name:{{this.name}}</p>
-                        <p style="color:#004f59">Phone NO:{{this.phoneno}}</p>
-                        <p style="color:#004f59">id:{{this.employeeid}}</p>
+                        <p id="ninjaid " style="color:#004f59">Name:{{this.first_name}}</p>
+                        <p style="color:#004f59">Phone NO:{{this.phone}}</p>
+                        <p style="color:#004f59">id:{{this._id}}</p>
                         <p style="color:#004f59">Locality:{{this.locality}}</p>
                         <p style="color:#004f59">City:{{this.city}}</p>
                         <!-- Button trigger modal -->
@@ -30,7 +30,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form id="form">
+                                        <form action="./clientdashboard/form" method="POST">
                                             <div class="form-group">
                                                 <input type="text" class="form-control" id="pickUp"
                                                     placeholder="Pick-Up address">
@@ -40,16 +40,20 @@
                                                 <input type="text" class="form-control" id="drop"
                                                     placeholder="Drop address">
                                             </div>
-                                            <div class="form-group" style="display: none;">
-                                                <input type="text" class="form-control" id="fare" value="" name="fare">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="fare" name="fare">
                                             </div>
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                                                name="fare">Close</button>
+
                                             <button type="submit" class="btn bg-info " id="book" name="booking"
                                                 value={{this._id}}>Book</button>
                                         </form>
                                     </div>
-
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-secondary" id="cal">Estimated
+                                            fare</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -6,13 +6,11 @@ $("#track").on("click", function() {
     method: "get",
     datatype: "json",
     success: function(data) {
-      for (i = 0; i < data.length; i++) {
-        if ((data[i].orderId = id)) {
+      for (var i = 0; i < data.length; i++) {
+        if (data[i]._id == id) {
           status = data[i].status;
           console.log(status);
-          $("#status").text(
-            "your parcel with id   " + id + "  is  being" + status
-          );
+          $("#status").text("your parcel with id   " + id + "  is " + status);
         }
       }
     }

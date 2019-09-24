@@ -10,17 +10,26 @@ mongoClient.connect(
     db = client.db("parcelninja");
   }
 );
-router.get("/", function(req, res) {
-  db.collection("ninja")
+
+router.post("/status", function(req, res) {
+  var status = req.body.status;
+  db.collection("ninja").update(
+    { id: req.query.id },
+    { $set: { availability: status } },
+    function(err, result) {
+      if (err) throw err;
+      console.log(req.body);
+      res.redirect("/ninjadashboard");
+    }
+  );
+});
+router.get("/orders", function(req, res) {
+  db.collection("parcel")
     .find({})
     .toArray(function(err, result) {
-      if (err) {
-        throw err;
-      }
-      res.render("ninjadashboard", {
-        title: "Ninja Dashboard"
-      });
+      if (err) throw err;
+      res.send(result);
+      console.log(result);
     });
 });
-
 module.exports = router;

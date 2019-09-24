@@ -19,67 +19,84 @@ router.use(
 );
 router.use(express.urlencoded({ extended: false }));
 router.use(express.static("public"));
-router.get("/", function(req, res) {
-  res.sendFile("login.html", { root: "public" });
+router.get("/ninja", function(req, res) {
+  res.render("loginninja", { layout: false });
 });
-router.post("/", function(req, res) {
+router.get("/customer", function(req, res) {
+  res.render("loginclient", { layout: false });
+});
+
+router.post("/customer", function(req, res) {
+  db.collection("ninjaUser")
+    .find({})
+    .toArray(function(err, result) {
+      if (err) {
+        throw err;
+      }
+      for (var i = 0; i < result.length; i++) {
+        if (
+          result[i].email == req.body.email &&
+          result[i].password == req.body.password
+        ) {
+          req.session.loggedIn = true;
+          res.redirect("/login/user");
+        }
+      }
+    });
+});
+
+router.post("/ninja", function(req, res) {
   console.log(req.body);
-  if (req.body.name) {
-    db.collection("ninja")
-      .find({})
-      .toArray(function(err, result) {
-        if (err) {
-          throw err;
-          res.redirect("/login");
-        }
-        for (var i = 0; i < result.length; i++) {
+  db.collection("ninja")
+    .find({})
+    .toArray(function(err, result) {
+      if (err) throw err;
+      for (var i = 0; i < result.length; i++) {
+        if (i != result.length - 1) {
           if (
             result[i].email == req.body.email &&
             result[i].password == req.body.password
           ) {
             req.session.loggedIn = true;
-            res.redirect("/login/ninja");
+            req.session.email = result[i].email;
+
+            res.redirect("/login/ninjadash");
           }
         }
-      });
-  } else {
-    db.collection("ninjaUser")
-      .find({})
-      .toArray(function(err, result) {
-        if (err) {
-          throw err;
-          res.redirect("/login");
-        }
-        for (var i = 0; i < result.length; i++) {
-          if (
-            result[i].email == req.body.email &&
-            result[i].password == req.body.password
-          ) {
-            req.session.loggedIn = true;
-            res.redirect("/login/user");
-          }
-        }
-      });
-  }
+      }
+    });
 });
 
 router.get("/user", function(req, res) {
   if (req.session.loggedIn) {
     res.redirect("/clientdashboard");
   } else {
-    res.redirect("/login");
+    res.redirect("/login/customer");
   }
 });
 
-router.get("/ninja", function(req, res) {
+router.get("/ninjadash", function(req, res) {
+  console.log(req.session.email);
   if (req.session.loggedIn) {
-    res.redirect("/ninjadashboard");
+    db.collection("ninja")
+      .find({ email: req.session.email })
+      .toArray(function(err, result) {
+        if (err) {
+          throw err;
+        }
+        console.log(result);
+        res.render("ninjadashboard", {
+          title: "Ninja Dashboard",
+          script: "./ninja.js",
+          data: result
+        });
+      });
   } else {
-    res.redirect("/login");
+    res.redirect("/login/ninja");
   }
 });
 router.get("/logout", function(req, res) {
   req.session.destroy();
-  res.redirect("/login");
+  res.redirect("/login/customer");
 });
 module.exports = router;
