@@ -1,0 +1,157 @@
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-3">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+                    aria-controls="v-pills-home" aria-selected="true">Dashboard</a>
+                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+                    aria-controls="v-pills-profile" aria-selected="false">Orders</a>
+                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
+                    aria-controls="v-pills-messages" aria-selected="false">Update Profile</a>
+                <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
+                    aria-controls="v-pills-settings" aria-selected="false">Logout</a>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                    aria-labelledby="v-pills-home-tab">
+                    <div class="container">
+                        <span>
+                            <img src="https://media.istockphoto.com/vectors/smiling-young-man-in-blue-vector-id486588050?k=6&m=486588050&s=612x612&w=0&h=XGLuEs-MjJs_VGb3LVwz0HfFeCwA4SBC40O3ybARCzg="
+                                alt="Ninja Picture" height="150px">
+
+                            <span id="ninja _name" style="font-size: 20px"> <strong>Name of the Ninja</strong> </span>
+                        </span>
+                    </div>
+                    <div class="container" style="text-align: center">
+                        <div class="row">
+                            {{#each data}}
+                            <div class="col-sm-6">
+                                <div class="card">
+                                    <div class="card-header ">
+                                        <h5>Personal Details</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="personal_details">
+                                            <div>
+                                                <label for="name">Name:</label>
+                                                <input type="text" id="name" value={{this.first_name}}></input>
+                                            </div>
+                                            <div>
+                                                <label for="id">Emp Id:</label>
+                                                <input type="text" id="id" value={{this._id}}></input>
+                                            </div>
+                                            <div>
+                                                <label for="locality">Locality:</label>
+                                                <input type="text" id="locality" value={{this.locality}}></input>
+                                            </div>
+                                            <div id="phone">
+                                                <label for="phone"> Contact No: </label>
+                                                <input type="number" id="phone" value={{this.phone}}></input>
+                                            </div>
+                                            <div id="email">
+                                                <label for="email">Registered Email:</label>
+                                                <input type="email" id="email" value={{this.email}}></input>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="card">
+                                    <h5 class="card-header">Availability Status</h5>
+                                    <div class="card-body">
+
+                                        <p id="availability">{{this.Availability}}</p>
+
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="card">
+                                    <h5 class="card-header">Duty Status</h5>
+                                    <div class="card-body">
+
+                                        <p id="duty">{{this.duty}}</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
+                        <br>
+                        <div class="container" style="text-align: center">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="card">
+                                        <h5 class="card-header">Duty</h5>
+                                        <div class="card-body">
+
+                                            <a href="#" id="Onduty" class="btn btn-primary"> Start Duty</a>
+                                            <a href="#" id="Offduty" class="btn btn-primary"> Stop Duty</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="card">
+                                        <h5 class="card-header">Change the Status</h5>
+                                        <div class="card-body">
+
+                                            <a href="#" id="available" class="btn btn-primary">Available </a>
+                                            <a href="#" id="not_available" class="btn btn-primary">Not Available</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <br>
+                        <br>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                    ...
+                </div>
+                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                    ...
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

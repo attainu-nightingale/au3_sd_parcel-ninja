@@ -15,7 +15,7 @@
                 width="50" height="50" alt="" style="border-radius: 50%">
         </a>
         <a class="navbar-brand mx-auto" href="/" id="brand">
-            <h2>Welcome</h2>
+            <h2>Welcome,{{this.first_name}}</h2>
         </a>
         <div class="navbar">
             <ul class="navbar-nav">
@@ -40,8 +40,16 @@
 
         </div>
     </nav>
-    {{{body}}}
-    <footer class="bg-dark   ">
+    <div class="container text-center my-5">
+        <form action="./" method="get">
+            <h1>Thanks</h1>
+            <h3>your order has been placed</h3>
+            <button type="submit">ok</button>
+        </form>
+
+
+    </div>
+    <footer class="bg-dark fixed-bottom">
         <div class="container pt-3">
             <div class="row">
                 <div class="col">
@@ -92,7 +100,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key={{ur api key}}s&libraries=places"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUDQlReLguD8jUO1_0r0c90bXOxAKCKVs&libraries=places"
         type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"

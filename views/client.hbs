@@ -1,24 +1,66 @@
-<div class="container mt-5">
-<div class="row">
-{{#each data}}
-<div class="column">
-<div class="card-deck"style="padding:10px">
-        <div class="card">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtjC1ue_JBgcpqkfusdsWaehhnHrjx5nZMG76rEZj4hoAm_gMD" class="card-img-top" alt="...">
-            <div class="card-body">
-            <form action="/clientdashboard/profile/{{this._id}}" method="POST">  
-            <p style="color:#004f59">Name:{{this.name}}</p>
-            <p style="color:#004f59">Phone NO:{{this.phoneno}}</p>
-            <p style="color:#004f59">id:{{this.employeeid}}</p>
-            <p style="color:#004f59">Locality:{{this.locality}}</p>
-            <p style="color:#004f59">City:{{this.city}}</p>
-            <button class="btn bg-info mb-3 book " type="submit" name="booking" value="{{this._id}}">Book</button>
-            </form>   
+<div class="container mt-5 mb-5">
+    <div class="row">
+        {{#each data}}
+        <div class="column">
+            <div class="card-deck" style="padding:10px">
+                <div class="card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtjC1ue_JBgcpqkfusdsWaehhnHrjx5nZMG76rEZj4hoAm_gMD"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p id="ninjaid " style="color:#004f59">Name:{{this.first_name}}</p>
+                        <p style="color:#004f59">Phone NO:{{this.phone}}</p>
+                        <p style="color:#004f59">id:{{this._id}}</p>
+                        <p style="color:#004f59">Locality:{{this.locality}}</p>
+                        <p style="color:#004f59">City:{{this.city}}</p>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                            data-target="#exampleModalCenter">
+                            Book
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalCenterTitle">EASY SHIPPING </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="./clientdashboard/form" method="POST">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="pickUp"
+                                                    placeholder="Pick-Up address">
+
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="drop"
+                                                    placeholder="Drop address">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="fare" name="fare">
+                                            </div>
+
+                                            <button type="submit" class="btn bg-info " id="book" name="booking"
+                                                value={{this._id}}>Book</button>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-secondary" id="cal">Estimated
+                                            fare</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        {{/each}}
     </div>
 </div>
-</div>
-{{/each}}
-</div>
-</div>
-            

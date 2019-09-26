@@ -6,24 +6,45 @@ li a,
   color: #00a7b5;
   font-size: 30px;
 }
-#navitem {
-  margin-left: 320px !important ;
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0,167,181, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
-.dropdown-item {
-  font-size: 20px !important;
+@media only screen and (min-width: 990px) {
+  .navitem {
+    margin-left: 320px !important ;
+  }
+  .dropdown-item {
+    font-size: 20px !important;
+  }
+  #neil {
+    background-image: url("https://www.lalamove.com/hubfs/Lalamove%20India%20images/Main%20page_india_new.svg");
+    background-size: cover;
+    background-position: 100% 20%;
+    height: 400px;
+  }
+
+  #neil > h1 {
+    position: relative;
+    top: 280px;
+    left: 40px;
+  }
 }
-#neil {
-  background-image: url("https://www.lalamove.com/hubfs/Lalamove%20India%20images/Main%20page_india_new.svg");
-  background-size: cover;
-  background-position: 100% 20%;
-  height: 400px;
+@media only screen and (max-width: 600px) {
+  #neil > h1 {
+    display: none;
+  }
+}
+@media only screen and (min-width: 650px) {
+  #neil > h1 {
+    position: relative;
+    top: 220px;
+    left: 40px;
+  }
+  .navitem {
+    margin-left: 280px !important ;
+  }
 }
 
-#neil > h1 {
-  position: relative;
-  top: 280px;
-  left: 40px;
-}
 #history {
   background-color: #00a7b5;
   text-align: center;
@@ -35,4 +56,20 @@ footer p {
 }
 #address li {
   color: #00a7b5;
+}
+.map-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+}
+.map-responsive iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+a:hover {
+  color: black;
 }

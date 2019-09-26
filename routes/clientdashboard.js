@@ -1,42 +1,47 @@
 const express = require("express");
 const router = express.Router();
-
-router.get("/profile", function(req,res){
-//    if (req.app.locals.loggedin == true){
-    const db = req.app.locals.db;
-    db.collection("ninja").find({}).toArray(function(err,result){
-        if(err) {
-            throw err;
-        }
-        console.log(result)
-        res.render("client",{
-            title:"Client Dashboard",
-            style:"/client.css",
-            data: result,
-        });
-    });   
-// //    }else {
-//     res.redirect("/");
-//   }
-});
-
-router.post("/profile/:id", function(req, res) {
-    console.log(req.params.id);
-    res.render("form", {
-    title:"client form",
-    id: req.params.id
+var mongoClient = require("mongodb").MongoClient;
+var db;
+mongoClient.connect(
+  "mongodb://localhost:27017",
+  { useUnifiedTopology: true },
+  function(err, client) {
+    if (err) throw err;
+    db = client.db("parcelninja");
+  }
+);
+router.get("/", function(req, res) {
+  db.collection("ninja")
+    .find({})
+    .toArray(function(err, result) {
+      if (err) {
+        throw err;
+      }
+      res.render("client", {
+        title: "Client Dashboard",
+        style: "/client.css",
+        script: "/fare.js",
+        data: result
+      });
     });
 });
 
-router.post("/parceldetails", function(req,res){
-const db = req.app.locals.db;
-db.collection("parcel").insertOne(req.body ,function(err,result){
-if(err) {
-    throw err;
+router.post("/form", function(req, res) {
+  console.log(req.body);
+  res.render("form", {
+    id: req.body.booking,
+    fare: req.body.fare
+  });
+});
+
+router.post("/parceldetails", function(req, res) {
+  db.collection("parcel").insertOne(req.body, function(err, result) {
+    if (err) {
+      throw err;
     }
-console.log(req.body)
+    console.log(req.body);
+  });
+  res.render("order", { layout: false });
 });
-res.redirect("/clientdashboard/profile")
-});
-    
+
 module.exports = router;

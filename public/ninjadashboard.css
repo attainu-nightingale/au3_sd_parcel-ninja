@@ -1,0 +1,30 @@
+#brand {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+li a {
+  text-decoration: none;
+  color: #e8e2d6;
+}
+
+a:hover {
+  background-color: #00a7b5;
+  color: #231f20;
+}
+#brand {
+  color: #e8e2d6;
+}
+#brand:hover {
+  background-color: #231f20;
+  color: #e8e2d6;
+}
+.btn-primary {
+  background-color: #00a7b5;
+  border: none;
+}
+.btn-primary:hover {
+  background-color: #231f20;
+  color: #e8e2d6;
+}
