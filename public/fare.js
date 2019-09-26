@@ -18,18 +18,24 @@ $("#cal").on("click", function() {
       var origins = response.originAddresses;
       var destinations = response.destinationAddresses;
       var distance = response.rows[0].elements[0].distance.text;
-      console.log(distance);
-
-      if (distance < 20) {
-        fare = 200;
-      } else if (20 < distance < 40) {
-        fare = 500;
-      } else {
-        fare = 700;
-      }
-
+      dist = parseInt(distance, 10);
+      console.log(dist);
+      fare = fareCalc(dist);
       $("#fare").attr("value", fare);
       $("#fare").attr("placeholder", fare);
     }
+  }
+  function fareCalc(distance) {
+    console.log("h");
+    var cost;
+
+    if (distance < 20) {
+      cost = 200;
+    } else if (20 < distance < 40) {
+      cost = 500;
+    } else {
+      cost = 700;
+    }
+    return cost;
   }
 });

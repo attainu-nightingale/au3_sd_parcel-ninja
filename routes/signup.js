@@ -13,8 +13,11 @@ mongoClient.connect(
 );
 
 router.use(express.static("public"));
-router.get("/", function(req, res) {
+router.get("/customer", function(req, res) {
   res.sendFile("signup.html", { root: "public" });
+});
+router.get("/ninja", function(req, res) {
+  res.sendFile("signupninja.html", { root: "public" });
 });
 router.post("/", function(req, res) {
   if (req.body.ninja) {
