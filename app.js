@@ -5,6 +5,7 @@ var signup = require("./routes/signup");
 var track = require("./routes/track");
 var clientdashboard = require("./routes/clientdashboard");
 var ninjadashboard = require("./routes/ninjadashboard");
+var messages = require("./routes/messages");
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.use("/signup", signup);
 app.use("/track", track);
 app.use("/clientdashboard", clientdashboard);
 app.use("/ninjadashboard", ninjadashboard);
+app.use("/messages", messages);
 
 app.get("/", function(req, res) {
   res.sendFile(__dirname + "/public/home.html");

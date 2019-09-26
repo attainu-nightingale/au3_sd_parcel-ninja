@@ -25,7 +25,7 @@ router.get("/ninja", function(req, res) {
 router.get("/customer", function(req, res) {
   res.render("loginclient", { layout: false });
 });
-
+//ninjaUser
 router.post("/customer", function(req, res) {
   db.collection("ninjaUser")
     .find({})
@@ -45,6 +45,14 @@ router.post("/customer", function(req, res) {
     });
 });
 
+router.get("/user", function(req, res) {
+  if (req.session.loggedIn) {
+    res.redirect("/clientdashboard");
+  } else {
+    res.redirect("/login/customer");
+  }
+});
+//ninja
 router.post("/ninja", function(req, res) {
   console.log(req.body);
   db.collection("ninja")
@@ -52,27 +60,17 @@ router.post("/ninja", function(req, res) {
     .toArray(function(err, result) {
       if (err) throw err;
       for (var i = 0; i < result.length; i++) {
-        if (i != result.length - 1) {
-          if (
-            result[i].email == req.body.email &&
-            result[i].password == req.body.password
-          ) {
-            req.session.loggedIn = true;
-            req.session.email = result[i].email;
+        if (
+          result[i].email == req.body.email &&
+          result[i].password == req.body.password
+        ) {
+          req.session.loggedIn = true;
+          req.session.email = result[i].email;
 
-            res.redirect("/login/ninjadash");
-          }
+          res.redirect("/login/ninjadash");
         }
       }
     });
-});
-
-router.get("/user", function(req, res) {
-  if (req.session.loggedIn) {
-    res.redirect("/clientdashboard");
-  } else {
-    res.redirect("/login/customer");
-  }
 });
 
 router.get("/ninjadash", function(req, res) {

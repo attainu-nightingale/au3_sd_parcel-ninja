@@ -1,34 +1,64 @@
+// availibilty status
 $("#available").click(function() {
-  $("#availability").empty();
-  $("#availability").append("<p>Available</p>");
-  var availability = "available";
-  var id = 001;
+  var id = $("#id").val();
   $.ajax({
-    url: "ninjadashboard/status", //Your api url
+    url: "/ninjadashboard/status", //Your api url
     type: "post", //type is any HTTP method
     data: {
       nid: id,
-      status: availability
+      status: "Available"
     }, //Data as js object
     success: function() {
       console.log("availbility Changed succesfully");
+      $("#availability").text("Available");
     }
   });
 });
 $("#not_available").click(function() {
-  $("#availability").empty();
-  $("#availability").append("<p>Not Available</p>");
-  var availability = "not available";
-  var id = "001";
+  var id = $("#id").val();
+
   $.ajax({
-    url: "ninjadashboard/status", //Your api url
+    url: "/ninjadashboard/statusAvail", //Your api url
     type: "post", //type is any HTTP method
     data: {
       nid: id,
-      status: availability
+      status: "Not Available"
     }, //Data as js object
     success: function() {
       console.log("availbility Changed succesfully");
+      $("#availability").text(" Not Available");
+    }
+  });
+});
+//duty status
+$("#Onduty").click(function() {
+  var id = $("#id").val();
+  $.ajax({
+    url: "/ninjadashboard/statusDuty", //Your api url
+    type: "post", //type is any HTTP method
+    data: {
+      nid: id,
+      duty: "On Duty"
+    }, //Data as js object
+    success: function() {
+      console.log("availbility Changed succesfully");
+      $("#duty").text("On Duty");
+    }
+  });
+});
+$("#Offduty").click(function() {
+  var id = $("#id").val();
+
+  $.ajax({
+    url: "/ninjadashboard/statusDuty", //Your api url
+    type: "post", //type is any HTTP method
+    data: {
+      nid: id,
+      duty: "Off Duty"
+    }, //Data as js object
+    success: function() {
+      console.log("availbility Changed succesfully");
+      $("#duty").text("Off Duty");
     }
   });
 });

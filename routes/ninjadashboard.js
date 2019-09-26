@@ -11,15 +11,25 @@ mongoClient.connect(
   }
 );
 
-router.post("/status", function(req, res) {
-  var status = req.body.status;
+router.post("/statusAvail", function(req, res) {
+  console.log(req.body);
   db.collection("ninja").update(
-    { id: req.query.id },
-    { $set: { availability: status } },
+    { id: req.body.id },
+    { $set: { Availability: req.body.status } },
     function(err, result) {
       if (err) throw err;
-      console.log(req.body);
-      res.redirect("/ninjadashboard");
+      res.send("updated");
+    }
+  );
+});
+router.post("/statusDuty", function(req, res) {
+  console.log(req.body);
+  db.collection("ninja").update(
+    { id: req.body.id },
+    { $set: { duty: req.body.duty } },
+    function(err, result) {
+      if (err) throw err;
+      res.send("updated");
     }
   );
 });

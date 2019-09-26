@@ -1,8 +1,6 @@
 body {
   box-sizing: border-box;
-  background-image: url("./image/clientdashboardback.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+
   font-family: sans-serif;
 }
 .card {
