@@ -1,4 +1,4 @@
-<div class="container-fluid mt-3">
+<div class="container-fluid mt-3 " style="height: 620px;">
     <div class="row">
         <div class="col-3">
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -8,7 +8,7 @@
                     aria-controls="v-pills-profile" aria-selected="false">Orders</a>
                 <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
                     aria-controls="v-pills-messages" aria-selected="false">Update Profile</a>
-                <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
+                <a class="nav-link" id="v-pills-settings-tab" href="/ninjadashboard/logout" role="button"
                     aria-controls="v-pills-settings" aria-selected="false">Logout</a>
             </div>
         </div>
@@ -16,7 +16,7 @@
             <div class="tab-content" id="v-pills-tabContent">
                 <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
                     aria-labelledby="v-pills-home-tab">
-                    <div class="container">
+                    <div class="container ">
                         <span>
                             <img src="https://media.istockphoto.com/vectors/smiling-young-man-in-blue-vector-id486588050?k=6&m=486588050&s=612x612&w=0&h=XGLuEs-MjJs_VGb3LVwz0HfFeCwA4SBC40O3ybARCzg="
                                 alt="Ninja Picture" height="150px">
@@ -29,9 +29,7 @@
                             {{#each data}}
                             <div class="col-sm-6">
                                 <div class="card">
-                                    <div class="card-header ">
-                                        <h5>Personal Details</h5>
-                                    </div>
+                                    <div class="card-header">Personal Details</div>
                                     <div class="card-body">
                                         <div id="personal_details">
                                             <div>
@@ -65,7 +63,7 @@
                                     <h5 class="card-header">Availability Status</h5>
                                     <div class="card-body">
 
-                                        <p id="availability">{{this.Availability}}</p>
+                                        <p id="availability" style="color: blue;">{{this.Availability}}</p>
 
                                     </div>
                                 </div>
@@ -74,7 +72,7 @@
                                     <h5 class="card-header">Duty Status</h5>
                                     <div class="card-body">
 
-                                        <p id="duty">{{this.duty}}</p>
+                                        <p id="duty" style="color: blue;">{{this.duty}}</p>
 
                                     </div>
                                 </div>
@@ -114,43 +112,63 @@
                     </div>
                 </div>
                 <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="conatiner overflow-auto">
+                        <button type="button" class="btn btn-primary" id="inTransit">In Transit</button>
+                        <button type="button" class="btn btn-primary" id="Delieverd">Delieverd </button>
+
+                        <table id="clienttable" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Order Id</th>
+                                    <th scope="col"> Client Name</th>
+                                    <th scope="col">Delivery Address</th>
+                                    <th scope="col">Pickup Address</th>
+                                    <th scope="col">Mobile Number</th>
+                                    <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+
                 </div>
                 <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                    ...
+                    <div class="container w-75">
+                        <form action="./profileUpdate" method="post" target="_self">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">First Name</label>
+                                <input type="text" class="form-control" name="firstName" id="firstName"
+                                    aria-describedby="emailHelp" value={{fname}}>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">last Name</label>
+                                <input type="text" class="form-control" name="lastName" id="lastName" value={{lname}}>
+                            </div>
+                            <div class="form-group ">
+                                <label for="exampleInputPassword1">Email</label>
+                                <input type="email" class="form-control" name="email" id="email" value={{email}}>
+                            </div>
+                            <div class="form-group ">
+                                <label for="exampleInputPassword1">Phone</label>
+                                <input type="number" class="form-control" name="Phone" id="phone"
+                                    placeholder="Phone Number">
+                            </div>
+                            <div class="form-group ">
+                                <label for="exampleInputPassword1">locality</label>
+                                <input type="text" class="form-control" id="locality" name="locality"
+                                    placeholder="locality">
+                            </div>
+                            <div class="form-group ">
+                                <label for="exampleInputPassword1">city</label>
+                                <input type="text" class="form-control" id="city" name="city" placeholder="city">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
                 </div>
-                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                    ...
-                </div>
+
             </div>
         </div>
     </div>

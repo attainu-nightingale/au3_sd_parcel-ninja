@@ -1,11 +1,12 @@
 var express = require("express");
 var exphbs = require("express-handlebars");
+var session = require("express-session");
 var login = require("./routes/login");
 var signup = require("./routes/signup");
 var track = require("./routes/track");
 var clientdashboard = require("./routes/clientdashboard");
 var ninjadashboard = require("./routes/ninjadashboard");
-var messages = require("./routes/messages");
+var messages = require("./routes/messages.js");
 
 var app = express();
 
@@ -20,9 +21,13 @@ mongoclient.connect(
   function(err, client) {
     if (err) throw err;
     db = client.db("parcelninja");
-  }
+  } 
 );
-
+app.use(
+  session({
+    secret: "Express session secret"
+  })
+);
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
 app.use("/login", login);
