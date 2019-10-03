@@ -1,66 +1,159 @@
-<div class="container mt-5 mb-5">
+<div class="container-fluid mt-2" style="height: 620px;">
     <div class="row">
-        {{#each data}}
-        <div class="column">
-            <div class="card-deck" style="padding:10px">
-                <div class="card">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtjC1ue_JBgcpqkfusdsWaehhnHrjx5nZMG76rEZj4hoAm_gMD"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p id="ninjaid " style="color:#004f59">Name:{{this.first_name}}</p>
-                        <p style="color:#004f59">Phone NO:{{this.phone}}</p>
-                        <p style="color:#004f59">id:{{this._id}}</p>
-                        <p style="color:#004f59">Locality:{{this.locality}}</p>
-                        <p style="color:#004f59">City:{{this.city}}</p>
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal"
-                            data-target="#exampleModalCenter">
-                            Book
-                        </button>
+        <div class="col-sm-2">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+                    aria-controls="v-pills-home" aria-selected="true">Dashboard</a>
+                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+                    aria-controls="v-pills-profile" aria-selected="false">Profile</a>
+                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
+                    aria-controls="v-pills-messages" aria-selected="false">My Orders</a>
+                <a class="nav-link" id="v-pills-update-tab" data-toggle="pill" href="#v-pills-update" role="tab"
+                    aria-controls="v-pills-update" aria-selected="false">Update profile</a>
+                <a class="nav-link" id="v-pills-settings-tab" href="/clientdashboard/logout" role="button"
+                    aria-controls="v-pills-settings" aria-selected="false">Logout</a>
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                    aria-labelledby="v-pills-home-tab">
+                    <h1 class="text-center"> Avialable Ninjas</h1>
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalCenterTitle">EASY SHIPPING </h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="./clientdashboard/form" method="POST">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" id="pickUp"
-                                                    placeholder="Pick-Up address">
+                    <div class="card-deck" style="padding:10px">
+                        {{#each data}}
+                        <div class="card">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtjC1ue_JBgcpqkfusdsWaehhnHrjx5nZMG76rEZj4hoAm_gMD"
+                                class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <p id="ninjaid " style="color:#004f59">Name:{{this.first_name}}</p>
+                                <p style="color:#004f59">Phone NO:{{this.phone}}</p>
+                                <p style="color:#004f59">id:{{this._id}}</p>
+                                <p style="color:#004f59">Locality:{{this.locality}}</p>
+                                <p style="color:#004f59">City:{{this.city}}</p>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#{{this.first_name}}">
+                                    Book
+                                </button>
 
+                                <!-- Modal -->
+                                <div class="modal fade" id={{this.first_name}} tabindex=" -1" role="dialog"
+                                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalCenterTitle">EASY SHIPPING </h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
                                             </div>
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" id="drop"
-                                                    placeholder="Drop address">
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" id="fare" name="fare">
-                                            </div>
+                                            <div class="modal-body">
+                                                <form action="clientdashboard/form" method="POST">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" id="pickUp"
+                                                            name="pickupaddress" placeholder="Pick-Up address">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" id="drop"
+                                                            name="deliveryaddress" placeholder="Drop address">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" id="fare" name="fare">
+                                                    </div>
 
-                                            <button type="submit" class="btn bg-info " id="book" name="booking"
-                                                value={{this._id}}>Book</button>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-secondary" id="cal">Estimated
-                                            fare</button>
+                                                    <button type="submit" class="btn bg-info " id="book" name="booking"
+                                                        value={{this._id}}>Book</button>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-secondary" id="cal">Estimated
+                                                    fare</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        {{/each}}
+                    </div>
+
+                </div>
+                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                    <div class="container w-50">
+                        <span>
+                            <img src="https://media.istockphoto.com/vectors/smiling-young-man-in-blue-vector-id486588050?k=6&m=486588050&s=612x612&w=0&h=XGLuEs-MjJs_VGb3LVwz0HfFeCwA4SBC40O3ybARCzg="
+                                alt="Ninja Picture" height="150px">
+
+                            <span id="name" style="font-size: 20px">{{fname}}</span>
+                        </span>
+                    </div>
+                    <div class="container w-50 mb-5">
+                        <div class="card">
+                            <div class="card-header ">
+                                Personal Details
+                            </div>
+                            <div class="card-body">
+                                <h4>Locality:{{this.locality}}</h4>
+                                <h4>Contact No:{{this.phone}}</h4>
+                                <h4>Registered Email:{{this.email}}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                    <button type="button" class="btn btn-primary" id="showorders"> show Orders</button>
+
+                    <table class="table table-stripped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Order Id</th>
+                                <th scope="col">Delivery Address</th>
+                                <th scope="col">Pickup Address</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="v-pills-update" role="tabpanel" aria-labelledby="v-pills-update-tab">
+                    <div class="container w-75">
+                        <form action="clientdashboard/profileUpdate" method="post" target="_self">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">First Name</label>
+                                <input type="text" class="form-control" name="firstName" id="firstName"
+                                    aria-describedby="emailHelp" value={{fname}}>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">last Name</label>
+                                <input type="text" class="form-control" name="lastName" id="lastName" value={{lname}}>
+                            </div>
+                            <div class="form-group ">
+                                <label for="exampleInputPassword1">Email</label>
+                                <input type="email" class="form-control" name="email" id="email" value={{email}}>
+                            </div>
+                            <div class="form-group ">
+                                <label for="exampleInputPassword1">Phone</label>
+                                <input type="number" class="form-control" name="Phone" id="phone"
+                                    placeholder="Phone Number">
+                            </div>
+                            <div class="form-group ">
+                                <label for="exampleInputPassword1">Address</label>
+                                <input type="text" class="form-control" id="address" name="Address"
+                                    placeholder="Address">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-        {{/each}}
     </div>
+</div>
+</div>
 </div>

@@ -39,3 +39,32 @@ $("#cal").on("click", function() {
     return cost;
   }
 });
+
+$("#showorders").on("click", function() {
+  var name = $("#name").text();
+  $("tbody").html("");
+  $.ajax({
+    url: "/clientdashboard/orders",
+    method: "get",
+    datatype: "json",
+    success: function(data) {
+      for (var i = 0; i < data.length; i++) {
+        if (data[i].Clientname == name) {
+          console.log(data[i]);
+          console.log(data[i].Clientname);
+          $("tbody").append(
+            "<tr><td>" +
+              data[i]._id +
+              "</td><td>" +
+              data[i].deliveryaddress +
+              "</td><td>" +
+              data[i].pickupaddress +
+              "</td><td>" +
+              data[i].status +
+              "</td></tr>"
+          );
+        }
+      }
+    }
+  });
+});

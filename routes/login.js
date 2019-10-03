@@ -20,10 +20,10 @@ router.use(
 router.use(express.urlencoded({ extended: false }));
 router.use(express.static("public"));
 router.get("/ninja", function(req, res) {
-  res.render("loginninja", { layout: false });
+  res.sendFile("loginninja.html", { root: "public" });
 });
 router.get("/customer", function(req, res) {
-  res.render("loginclient", { layout: false });
+  res.sendFile("logincustomer.html", { root: "public" });
 });
 //ninjaUser
 router.post("/customer", function(req, res) {
@@ -39,6 +39,9 @@ router.post("/customer", function(req, res) {
           result[i].password == req.body.password
         ) {
           req.session.loggedIn = true;
+          req.session.fname = result[i].first_name;
+          req.session.lname = result[i].last_name;
+          req.session.email = result[i].email;
           res.redirect("/login/user");
         }
       }
@@ -54,7 +57,6 @@ router.get("/user", function(req, res) {
 });
 //ninja
 router.post("/ninja", function(req, res) {
-  console.log(req.body);
   db.collection("ninja")
     .find({})
     .toArray(function(err, result) {
@@ -66,35 +68,13 @@ router.post("/ninja", function(req, res) {
         ) {
           req.session.loggedIn = true;
           req.session.email = result[i].email;
+          req.session.fname = result[i].first_name;
+          req.session.lname = result[i].last_name;
 
-          res.redirect("/login/ninjadash");
+          res.redirect("/ninjadashboard/ninjadash");
         }
       }
     });
 });
 
-router.get("/ninjadash", function(req, res) {
-  console.log(req.session.email);
-  if (req.session.loggedIn) {
-    db.collection("ninja")
-      .find({ email: req.session.email })
-      .toArray(function(err, result) {
-        if (err) {
-          throw err;
-        }
-        console.log(result);
-        res.render("ninjadashboard", {
-          title: "Ninja Dashboard",
-          script: "./ninja.js",
-          data: result
-        });
-      });
-  } else {
-    res.redirect("/login/ninja");
-  }
-});
-router.get("/logout", function(req, res) {
-  req.session.destroy();
-  res.redirect("/login/customer");
-});
 module.exports = router;
