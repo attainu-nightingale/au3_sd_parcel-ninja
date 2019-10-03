@@ -13,22 +13,26 @@ mongoClient.connect(
 );
 
 router.use(express.static("public"));
-router.get("/customer", function(req, res) {
+
+
+router.get("/", function(req, res) {
   res.sendFile("signup.html", { root: "public" });
 });
-router.get("/ninja", function(req, res) {
+
+router.get("/signupninja", function(req, res) {
   res.sendFile("signupninja.html", { root: "public" });
 });
 router.post("/", function(req, res) {
-  if (req.body.ninja) {
-    db.collection("ninja").insertOne(req.body);
-    console.log(req.body);
-    res.redirect("/signup");
-  } else {
     db.collection("ninjaUser").insertOne(req.body);
     console.log(req.body);
-    res.redirect("/signup");
-  }
+    res.redirect("/login/customer");
+  
+});
+
+router.post("/ninja", function(req, res) {
+    db.collection("ninja").insertOne(req.body);
+    console.log(req.body);
+    res.redirect("/login/ninja");
 });
 
 module.exports = router;

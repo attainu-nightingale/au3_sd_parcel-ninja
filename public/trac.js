@@ -15,5 +15,5 @@ $("#track").on("click", function() {
       }
     }
   });
-  $("#exampleModal").modal("show");
+  $("#exampleModal").modal("show"); 
 });
