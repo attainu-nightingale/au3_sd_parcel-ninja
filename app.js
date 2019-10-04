@@ -11,13 +11,13 @@ const clientdashboard=require("./routes/clientdashboard");
 
 const mongoClient = require("mongodb").MongoClient;
 var url = "mongodb://localhost:27017"
-
+var db;
 mongoClient.connect(url, (err, client) => {
     if (err) throw err;
-    app.locals.db = client.db("parcelninja");
+    db = client.db("parcel_ninja");
   });
 
-app.engine("hbs", exphbs({ defaultLayout: "main", extname: ".hbs" }));
+
 app.set("view engine", "hbs");
 
 
@@ -32,10 +32,49 @@ app.get("/" ,function(req, res){
 // app.use("/home",home);
 // app.use("/aboutus",aboutus);
 // app.use("/contactus",contactus);
-// app.use("/ninjalogin",ninjalogin);
-// app.use("/clientlogin",clientlogin);
+app.use("/ninjalogin",ninjalogin);
+
 app.use("/clientdashboard",clientdashboard);
 // app.use("/ninjadashboard",ninjadashboard);
+
+app.get("/clientlogin",function(req,res){
+    res.render("login.hbs",{
+        title : "Login | Client",
+        
+    });
+})
+
+
+app.get("/signup",function(req,res){
+    res.render("client.hbs")
+})
+
+app.post("/login",function(req,res){
+
+    db.collection("clients").find({}).toArray(function(err, result){
+        
+        if (err) throw err;
+        for (var i=0;i<result.length;i++){
+            if(result[i].email==req.body.email&&result[i].password==req.body.password){
+                
+                res.render("clientdashboard.hbs",{
+                    title : "Client Dashboard",
+                    name : result[i].name
+                });
+                break;
+            }
+           
+        }
+        res.render("login.hbs",{
+            
+                title : "Login Failed | Retry",
+                message : "Login Credentials wrong, Please Try Again"
+    
+        });
+    })
+
+})
+
 
 app.listen(3000, function(){
     console.log("port is running!!!")

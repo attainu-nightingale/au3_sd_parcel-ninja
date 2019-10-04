@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,7 +12,7 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./login.css" />
 ​
     <style>
       body {
@@ -26,7 +25,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg  bg-transparent ">
-      <a class="navbar-brand" href="#"
+      <a class="navbar-brand" href="/"
         ><img
           src="https://trello-attachments.s3.amazonaws.com/5d64b7996a65fb4014beeb40/5d64dfa3fadb095e7a5002f0/de469a6c99b746d199951fea00a5acff/logo.png"
           width="50"
@@ -41,26 +40,26 @@
         type="button"
         data-toggle="collapse"
         data-target="#navbarSupportedContent"
-      >
+      > 
         <span class="navbar-toggler-icon"></span>
       </button>
 ​
-      <div class="collapse navbar-collapse " id="navitem">
+      <div class="collapse navbar-collapse navitem " id="navbarSupportedContent">
         <ul class="navbar-nav ">
           <li class="nav-item mx-5   ">
-            <a class="nav-link" href="#">Home </a>
+            <a class="nav-link" href="/">Home </a>
           </li>
-          <li class="nav-item  mx-5active">
-            <a class="nav-link" href="#">About Us</a>
+          <li class="nav-item  mx-5">
+            <a class="nav-link" href="/about">About Us</a>
           </li>
           <li class="nav-item mx-5">
-            <a class="nav-link" href="#">Contact Us</a>
+            <a class="nav-link" href="/contact">Contact Us</a>
           </li>
-
+          
         </ul>
       </div>
     </nav>
-    <div class="container border rounded w-75 " id="form">
+    <div class="container border rounded w-75  mt-5" >
       <div class="row .no-gutters">
         <div
           class="col text-justify text-center  "
@@ -73,42 +72,50 @@
           </button>
         </div>
         <div class="col" style="background-color: white;">
-          <div>
-          <form class="w-75 mx-auto py-3" action="/login" method="POST">
+          <form class="w-75 mx-auto py-3"action="/login"  method="POST">
               <h1  class="text-center"
               style="color: #00a7b5;">Sign In </h1>
-              <div class="form-group">
-                <input type="text" name="email" class="form-control" placeholder="Email">
+
+            <div class="form-group" >
+              <input
+                type="email"
+                name="email"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                placeholder="Enter email"
+              />
+              <small id="emailHelp" class="form-text text-muted"
+              >
             </div>
             <div class="form-group">
-                <input type="password" name="password" class="form-control"placeholder="Password">
-            </div>
-            <!-- <div class="form-group  text-center form-check">
               <input
-                type="checkbox"
-                class="form-check-input"
-                id="exampleCheck1"
-                name="ninja"
-                value="true"
+                type="password"
+                name="password"
+                class="form-control"
+                id="exampleInputPassword1"
+                placeholder="Password"
               />
-              <label class="form-check-label" for="exampleCheck1"
-                >As Ninja</label>
-            </div> -->
-              <!-- <div class="form-group  text-center form-check">
+            </div>
+            
+            <div class="form-group  text-center form-check">
                     <input
                       type="checkbox"
                       class="form-check-input"
                       id="exampleCheck1"
+                      name="ninja"
+                      value="true"
                     />
                     <label class="form-check-label" for="exampleCheck1"
                       >As Ninja</label>
-                  </div> -->
-                  <div>
-                  <input type="submit" value="SignIn" class="btn  px-4 btn-dark btn-primary"style="margin-left:100px;"><a href="/ninjasignup"style="margin-left:10px;">signup</a>
+                  </div>
+                  <div class="form-group text-center">
+​
+            <button type="submit" class="btn  px-4 btn-dark btn-primary">Submit</button>
+            </div>
+            <a href='/signup' class="btn btn-dark btn-primary" style="margin-left:130px;">Create account</a>
+          </form>
         </div>
-          </form>                  
-        </div>
-        </div>                     
       </div>
     </div>
     <footer class="bg-dark">
@@ -175,6 +182,8 @@
         </h5>
       </div>
     </footer>
-    ​
+    ​<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
-</html> 
+</html>
