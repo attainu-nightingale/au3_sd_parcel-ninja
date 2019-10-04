@@ -19,9 +19,8 @@
         </a>
         <div class="navbar">
             <ul class="navbar-nav">
-
                 <li class="nav-item">
-                    <a class="nav-link" href="/home">Home</a>
+                    <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/about">About US</a>
@@ -30,23 +29,19 @@
                     <a class="nav-link" href="/contact">Contact Us</a>
 
                 </li>
-
                 <li class="nav-item">
-                    <a class="nav-link" href="/login/logout">logout</a>
+                    <a class="nav-link" href="/clientdashboard/logout">logout</a>
 
                 </li>
-
             </ul>
-
         </div>
     </nav>
     <div class="container text-center my-5">
-        <form action="./" method="get">
+        <form action="/clientdashboard" method="GET">
             <h1>Thanks</h1>
-            <h3>your order has been placed.Your order is:{{orderid}}</h3>
+            <h3>your order has been placed.Your order is :{{id}}</h3>
             <button type="submit" class="btn btn-primary">ok</button>
         </form>
-
 
     </div>
     <footer class="bg-dark fixed-bottom">

@@ -1,4 +1,4 @@
-<div class="container-fluid mt-2" style="height: 620px;">
+<div class="container-fluid mt-2">
     <div class="row">
         <div class="col-sm-2">
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -19,66 +19,74 @@
                 <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
                     aria-labelledby="v-pills-home-tab">
                     <h1 class="text-center"> Avialable Ninjas</h1>
+                    <div class="container">
 
-                    <div class="card-deck" style="padding:10px">
-                        {{#each data}}
-                        <div class="card">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtjC1ue_JBgcpqkfusdsWaehhnHrjx5nZMG76rEZj4hoAm_gMD"
-                                class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <p id="ninjaid " style="color:#004f59">Name:{{this.first_name}}</p>
-                                <p style="color:#004f59">Phone NO:{{this.phone}}</p>
-                                <p style="color:#004f59">id:{{this._id}}</p>
-                                <p style="color:#004f59">Locality:{{this.locality}}</p>
-                                <p style="color:#004f59">City:{{this.city}}</p>
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#{{this.first_name}}">
-                                    Book
-                                </button>
+                        <div class="row">
 
-                                <!-- Modal -->
-                                <div class="modal fade" id={{this.first_name}} tabindex=" -1" role="dialog"
-                                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalCenterTitle">EASY SHIPPING </h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form action="clientdashboard/form" method="POST">
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control" id="pickUp"
-                                                            name="pickupaddress" placeholder="Pick-Up address">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control" id="drop"
-                                                            name="deliveryaddress" placeholder="Drop address">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control" id="fare" name="fare">
-                                                    </div>
+                            {{#each data}}
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3" style="padding:10px">
+                                <div class="card">
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtjC1ue_JBgcpqkfusdsWaehhnHrjx5nZMG76rEZj4hoAm_gMD"
+                                        class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <p id="ninjaid " style="color:#004f59">Name:{{this.first_name}}</p>
+                                        <p style="color:#004f59">Phone NO:{{this.phone}}</p>
+                                        <p style="color:#004f59">id:{{this._id}}</p>
+                                        <p style="color:#004f59">Locality:{{this.locality}}</p>
+                                        <p style="color:#004f59">City:{{this.city}}</p>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                            data-target="#{{this.first_name}}">
+                                            Book
+                                        </button>
 
-                                                    <button type="submit" class="btn bg-info " id="book" name="booking"
-                                                        value={{this._id}}>Book</button>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-secondary" id="cal">Estimated
-                                                    fare</button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id={{this.first_name}} tabindex=" -1" role="dialog"
+                                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalCenterTitle">EASY
+                                                            SHIPPING </h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form action="clientdashboard/form" method="POST">
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" id="pickUp"
+                                                                    name="pickupaddress" placeholder="Pick-Up address">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" id="drop"
+                                                                    name="deliveryaddress" placeholder="Drop address">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input type="text" class="form-control" id="fare"
+                                                                    name="fare">
+                                                            </div>
+
+                                                            <button type="submit" class="btn bg-info " id="book"
+                                                                name="booking" value={{this._id}}>Book</button>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn btn-secondary"
+                                                            id="cal">Estimated
+                                                            fare</button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            {{/each}}
                         </div>
-                        {{/each}}
                     </div>
 
                 </div>
@@ -97,8 +105,8 @@
                                 Personal Details
                             </div>
                             <div class="card-body">
-                                <h4>Locality:{{this.locality}}</h4>
-                                <h4>Contact No:{{this.phone}}</h4>
+                                <h4>Locality:{{this.Address}}</h4>
+                                <h4>Contact No:{{this.Phone}}</h4>
                                 <h4>Registered Email:{{this.email}}</h4>
                             </div>
                         </div>
@@ -138,9 +146,9 @@
                                 <input type="email" class="form-control" name="email" id="email" value={{email}}>
                             </div>
                             <div class="form-group ">
-                                <label for="exampleInputPassword1">Phone</label>
-                                <input type="number" class="form-control" name="Phone" id="phone"
-                                    placeholder="Phone Number">
+                                <label for="Phone">Phone</label>
+                                <input type="text" class="form-control" name="Phone" id="phone"
+                                    placeholder="Number with length 10" pattern="[7,8,9]{1}[0-9]{9}">
                             </div>
                             <div class="form-group ">
                                 <label for="exampleInputPassword1">Address</label>

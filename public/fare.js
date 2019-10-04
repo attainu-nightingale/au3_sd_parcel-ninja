@@ -1,3 +1,5 @@
+console.log("hello");
+
 $("#cal").on("click", function() {
   var fare;
   var origin = $("#pickUp").val();

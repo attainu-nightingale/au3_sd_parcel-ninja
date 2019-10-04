@@ -25,7 +25,9 @@ router.get("/", function(req, res) {
           fname: req.session.fname,
           lname: req.session.lname,
           email: req.session.email,
-          data: result
+          data: result,
+          Address: req.session.Address,
+          Phone: req.session.Phone
         });
       });
   } else {
@@ -34,7 +36,6 @@ router.get("/", function(req, res) {
 });
 
 router.post("/profileUpdate", function(req, res) {
-  console.log(req.body);
   db.collection("ninjaUser").updateOne(
     { email: req.body.email },
     {
@@ -53,7 +54,6 @@ router.post("/profileUpdate", function(req, res) {
 });
 
 router.post("/form", function(req, res) {
-  console.log(req.body);
   res.render("form", {
     name: req.session.fname,
     id: req.body.booking,
@@ -64,7 +64,6 @@ router.post("/form", function(req, res) {
 });
 
 router.post("/parceldetails", function(req, res) {
-  var id;
   var myobj = {
     Clientname: req.body.Clientname,
     Fare: req.body.fare,
@@ -82,14 +81,12 @@ router.post("/parceldetails", function(req, res) {
     if (err) {
       throw err;
     }
-    id = result._id;
-    console.log(id);
+    var orderid = result.ops[0]._id;
+    res.render("order", { layout: false, id: orderid });
   });
-  res.render("order", { layout: false, orderid: id });
 });
 
 router.get("/orders", function(req, res) {
-  console.log(req.body);
   if (req.session.loggedIn) {
     db.collection("parcel")
       .find({})

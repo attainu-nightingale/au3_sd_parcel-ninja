@@ -14,21 +14,61 @@ mongoClient.connect(
 
 router.use(express.static("public"));
 router.get("/customer", function(req, res) {
-  res.sendFile("signup.html", { root: "public" });
+  res.render("signup", { layout: false });
 });
 router.get("/ninja", function(req, res) {
-  res.sendFile("signupninja.html", { root: "public" });
+  res.render("signupninja", { layout: false });
 });
-router.post("/", function(req, res) {
-  if (req.body.ninja) {
-    db.collection("ninja").insertOne(req.body);
-    console.log(req.body);
-    res.redirect("/signup");
-  } else {
-    db.collection("ninjaUser").insertOne(req.body);
-    console.log(req.body);
-    res.redirect("/signup");
-  }
+router.post("/customer", function(req, res) {
+  db.collection("ninjaUser")
+    .find({
+      email: req.body.email
+    })
+    .toArray(function(err, result) {
+      if (err) {
+        throw err;
+      } else {
+        if (result == undefined || result.length == 0) {
+          console.log("k");
+          db.collection("ninjaUser").insertOne(req.body);
+          console.log(req.body);
+          res.redirect("/signup/customer");
+        } else {
+          console.log("h");
+          req.session.errMsg = "Email already in use";
+          res.render("signup", {
+            layout: false,
+            error: req.session.errMsg
+          });
+        }
+      }
+    });
+});
+
+router.post("/ninja", function(req, res) {
+  db.collection("ninja")
+    .find({
+      email: req.body.email
+    })
+    .toArray(function(err, result) {
+      if (err) {
+        throw err;
+      } else {
+        if (result == undefined || result.length == 0) {
+          console.log("k");
+          db.collection("ninja").insertOne(req.body);
+          console.log(req.body);
+          res.redirect("/signup/ninja");
+        } else {
+          console.log("h");
+          req.session.errMsg = "Email already in use";
+          res.render("signupninja", {
+            layout: false,
+            error: req.session.errMsg
+          });
+        }
+      }
+    });
 });
 
 module.exports = router;

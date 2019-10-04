@@ -93,7 +93,7 @@ $(document).ready(function() {
         status: "in transit"
       }, //Data as js object
       success: function() {
-        console.log("inTransit Changed succesfully");
+        alert(" status changed to in-Transit succesfully");
       }
     });
     console.log(ids);
@@ -112,7 +112,7 @@ $("#Delieverd").click(function() {
       status: "Delieverd"
     }, //Data as js object
     success: function() {
-      console.log("Delieverd Changed succesfully");
+      alert(" status changed to Delieverd succesfully");
     }
   });
   console.log(ids);

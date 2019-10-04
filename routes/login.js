@@ -20,28 +20,34 @@ router.use(
 router.use(express.urlencoded({ extended: false }));
 router.use(express.static("public"));
 router.get("/ninja", function(req, res) {
-  res.sendFile("loginninja.html", { root: "public" });
+  res.render("loginninja", { layout: false });
 });
 router.get("/customer", function(req, res) {
-  res.sendFile("logincustomer.html", { root: "public" });
+  res.render("logincustomer", { layout: false });
 });
 //ninjaUser
 router.post("/customer", function(req, res) {
   db.collection("ninjaUser")
-    .find({})
+    .find({
+      $and: [{ email: req.body.email }, { password: req.body.password }]
+    })
     .toArray(function(err, result) {
       if (err) {
         throw err;
-      }
-      for (var i = 0; i < result.length; i++) {
-        if (
-          result[i].email == req.body.email &&
-          result[i].password == req.body.password
-        ) {
+      } else {
+        if (result == undefined || result.length == 0) {
+          req.session.errMsg = "Invalid Credential";
+          res.render("logincustomer", {
+            layout: false,
+            error: req.session.errMsg
+          });
+        } else {
           req.session.loggedIn = true;
-          req.session.fname = result[i].first_name;
-          req.session.lname = result[i].last_name;
-          req.session.email = result[i].email;
+          req.session.fname = result[0].first_name;
+          req.session.lname = result[0].last_name;
+          req.session.email = result[0].email;
+          req.session.Address = result[0].Address;
+          req.session.Phone = result[0].Phone;
           res.redirect("/login/user");
         }
       }
@@ -58,18 +64,25 @@ router.get("/user", function(req, res) {
 //ninja
 router.post("/ninja", function(req, res) {
   db.collection("ninja")
-    .find({})
+    .find({
+      $and: [{ email: req.body.email }, { password: req.body.password }]
+    })
     .toArray(function(err, result) {
-      if (err) throw err;
-      for (var i = 0; i < result.length; i++) {
-        if (
-          result[i].email == req.body.email &&
-          result[i].password == req.body.password
-        ) {
+      if (err) {
+        throw err;
+      } else {
+        if (result == undefined || result.length == 0) {
+          req.session.errMsg = "Invalid Credential";
+          res.render("loginninja", {
+            layout: false,
+            error: req.session.errMsg
+          });
+        } else {
+          req.session.email = result[0].email;
+          req.session.fname = result[0].first_name;
+          req.session.lname = result[0].last_name;
+          req.session.ninjaid = result[0]._id;
           req.session.loggedIn = true;
-          req.session.email = result[i].email;
-          req.session.fname = result[i].first_name;
-          req.session.lname = result[i].last_name;
 
           res.redirect("/ninjadashboard/ninjadash");
         }

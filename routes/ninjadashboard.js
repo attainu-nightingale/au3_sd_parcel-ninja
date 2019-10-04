@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-var mongoClient = require("mongodb").MongoClient;
+var { MongoClient: mongoClient, ObjectID } = require("mongodb");
 var db;
 mongoClient.connect(
   "mongodb://localhost:27017",
@@ -34,7 +34,6 @@ router.get("/ninjadash", function(req, res) {
 });
 
 router.post("/statusAvail", function(req, res) {
-  console.log(req.body);
   db.collection("ninja").update(
     { id: req.body.id },
     { $set: { Availability: req.body.status } },
@@ -45,7 +44,6 @@ router.post("/statusAvail", function(req, res) {
   );
 });
 router.post("/statusDuty", function(req, res) {
-  console.log(req.body);
   db.collection("ninja").update(
     { id: req.body.id },
     { $set: { duty: req.body.duty } },
@@ -58,15 +56,15 @@ router.post("/statusDuty", function(req, res) {
 router.get("/orders", function(req, res) {
   if (req.session.loggedIn) {
     db.collection("parcel")
-      .find({})
+      .find({ ninjaid: req.session.ninjaid })
       .toArray(function(err, result) {
         if (err) throw err;
+
         res.send(result);
       });
   }
 });
 router.post("/profileUpdate", function(req, res) {
-  console.log(req.body);
   db.collection("ninja").updateOne(
     { email: req.body.email },
     {
@@ -84,9 +82,8 @@ router.post("/profileUpdate", function(req, res) {
   );
 });
 router.post("/orderUpdate", function(req, res) {
-  console.log(req.body);
   db.collection("parcel").updateOne(
-    { _id: "5d7d1fbf33fb1d9f4103a702" },
+    { _id: ObjectID(req.body.nid) },
     { $set: { status: req.body.status } },
     function(err, result) {
       console.log(result);
